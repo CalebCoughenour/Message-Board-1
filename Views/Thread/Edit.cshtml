@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+@model MessageBoard.Models.Thread
+<h2>Update Thread</h2>
+@using (Html.BeginForm("Edit", "Thread", FormMethod.Post))
+{
+    @Html.LabelFor(thread => thread.Title)
+    @Html.TextBoxFor(thread=> thread.Title)
+
+    <input type="submit" value="Edit Thread" />
+}

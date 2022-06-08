@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+@model MessageBoard.Models.Post
+@using (Html.BeginForm("Create", "Post", FormMethod.Post))
+{
+  
+    @Html.LabelFor(post => post.Message)
+    @Html.TextBoxFor(post=> post.Message)
+
+    <input type="submit" value="Reply" />
+}

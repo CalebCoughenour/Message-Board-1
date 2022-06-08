@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MessageBoard.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace MessageBoard.Controllers
 {

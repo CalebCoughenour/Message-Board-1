@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MessageBoard.Models;
 using MessageBoard.ViewModels;
+using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace MessageBoard.Controllers
 {
@@ -22,10 +24,18 @@ namespace MessageBoard.Controllers
             ApplicationUser.Register(model);
             return RedirectToAction("Index", "Home");
         }
+
         public ActionResult Login()
         {
-            var allThreads = Thread.GetThreads();
-            return View(allThreads);
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
+        {
+            string userId = ApplicationUser.Login(model);
+            HttpContext.Session.SetString("userId", userId);
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Logoff()
         {

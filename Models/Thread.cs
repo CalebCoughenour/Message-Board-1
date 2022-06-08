@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -26,7 +27,7 @@ namespace MessageBoard.Models
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      List<Thread> threadList = JsonConvert.DeserializeObject<List<Thread>>(jsonResponse.ToString());
+      List<Thread> threadList = JsonConvert.DeserializeObject<List<Thread>>(jsonResponse.ToString()).OrderBy(x => x.DateCreated).ToList();
 
       return threadList;
     }
@@ -40,6 +41,16 @@ namespace MessageBoard.Models
       Thread threadList = JsonConvert.DeserializeObject<Thread>(jsonResponse.ToString());
 
       return threadList;
+    }
+
+    public static int PostThread(Thread thread)
+    {
+        var apiCallTask = ApiHelper.ApiPostThread(thread);
+        var result = apiCallTask.Result;
+        // int threadId = result;
+        JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+        int threadId = Int32.Parse(jsonResponse["id"].ToString());
+        return threadId;
     }
   }
 }

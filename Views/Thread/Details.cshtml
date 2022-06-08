@@ -14,9 +14,12 @@
       {
         <li>
           @Html.ActionLink($"{post.Author}", "Details", "Post", new { id = @post.PostId })
-          <p>@post.Message</p>
+          <p>Message: @post.Message</p>
         </li>
       }
     }
   </ul>
+  @Html.ActionLink("Reply", "Create", "Post", new {id = Model.ThreadId} ) 
+  <p>@Html.ActionLink("Delete Thread", "Delete", "Thread", new {id = Model.ThreadId} ) <p>
+  <p>@Html.ActionLink("Edit Thread", "Edit", new { id = Model.ThreadId})</p>
 </div>

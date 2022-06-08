@@ -25,5 +25,15 @@ namespace MessageBoard.Models
 
       return postList;
     }
+
+    public static string PostPost(Post post)
+    {
+      var apiCallTask = ApiHelper.ApiPostPost(post);
+        var result = apiCallTask.Result;
+        // int threadId = result;
+        JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+        var thisPost = jsonResponse["id"].ToString();
+        return thisPost;
+    }
   }
 }

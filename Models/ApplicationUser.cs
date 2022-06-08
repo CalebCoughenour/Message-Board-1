@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using MessageBoard.ViewModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Http;
+using System.Web;
 
 namespace MessageBoard.Models
 {
@@ -11,7 +13,7 @@ namespace MessageBoard.Models
 
         public static void Register(RegisterViewModel model)
         {
-            var apiCallTask = ApiHelper.PostRegister(model);
+            var apiCallTask = ApiHelper.ApiPostRegister(model);
             var result = apiCallTask.Result;
 
             JValue jsonResponse = JsonConvert.DeserializeObject<JValue>(result);
@@ -19,5 +21,18 @@ namespace MessageBoard.Models
             _userId = jsonResponse.ToString();
 
         }
+
+        public static string Login(LoginViewModel model)
+        {
+            var apiCallTask = ApiHelper.ApiPostLogin(model);
+            var result = apiCallTask.Result;
+
+            JValue jsonResponse = JsonConvert.DeserializeObject<JValue>(result);
+            
+            
+            return jsonResponse.ToString();
+        }
+
+
     }
 }
