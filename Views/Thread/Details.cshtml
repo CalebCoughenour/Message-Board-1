@@ -1,8 +1,9 @@
 @using MessageBoard.Models
+@using Microsoft.AspNetCore.Http;
 @model MessageBoard.Models.Thread
 
-<div class="text-center">
-  <h1 class="display-4">@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h1>
+<div>
+  <h1 class="display-4">@Html.DisplayFor(model => model.Title)</h1>
   <ul>
     @if (Model.Posts.Count == 0)
     {
@@ -13,13 +14,26 @@
       @foreach (Post post in Model.Posts)
       {
         <li>
-          @Html.ActionLink($"{post.Author}", "Details", "Post", new { id = @post.PostId, threadId = @post.ThreadId })
-          <p>Message: @post.Message</p>
+          <table>
+            <tr>
+              <th>@Html.ActionLink($"{post.Author}", "Details", "Post", new { id = @post.PostId, threadId = @post.ThreadId }) @post.DateCreated</th>
+            </tr>
+            <tr>
+              <td> @post.Message</td>
+            </tr>
+          </table>
+          
         </li>
       }
     }
   </ul>
-  @Html.ActionLink("Reply", "Create", "Post", new {id = Model.ThreadId} ) 
-  <p>@Html.ActionLink("Delete Thread", "Delete", "Thread", new {id = Model.ThreadId} ) <p>
-  <p>@Html.ActionLink("Edit Thread", "Edit", new { id = Model.ThreadId})</p>
+
+  <div class="nav-bot">
+    @Html.ActionLink("Reply", "Create", "Post", new {id = Model.ThreadId} )
+    @if(Model.UserId == Context.Session.GetString("userId"))
+    {
+    @Html.ActionLink("Edit Thread", "Edit", new { id = Model.ThreadId})
+    @Html.ActionLink("Delete Thread", "Delete", "Thread", new {id = Model.ThreadId} )
+    }
+  </div>
 </div>

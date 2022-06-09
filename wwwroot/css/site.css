@@ -10,6 +10,7 @@ a.navbar-brand {
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
+
 }
 
 .btn-primary {
@@ -24,9 +25,63 @@ a {
   border-color: #1861ac;
 }
 
+.nav-bot a {
+background-color: #0366d6;
+color:white;
+padding: .5rem;
+border-radius: 5px;
+}
+/* body content 
+--------------------------------------------*/
+li {
+  list-style: none;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: #1b6ec2;
+  width: 100%;
+  padding: .25rem;
+  color: white;
+}
+th a {
+  color: white;
+}
+td {
+  background-color: #6596c7;
+  padding: .25rem;
+  color: white;
+}
+.thread {
+  display: flex;
+}
+
+.thread-link {
+  width: 100%;
+  padding: .5rem;
+  background-color: #ffffff;
+  border: 2px solid #0366d6;
+  color: rgb(97, 97, 97);
+  border-radius: .5rem;
+  transition: 0.3s;
+}
+
+.thread-link:hover {
+  width: 100%;
+  padding: .5rem;
+  background-color: #5981af;
+  color: #fff;
+  text-decoration: none;
+  
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/* html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
@@ -49,23 +104,23 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}
+} */
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/* html {
   position: relative;
   min-height: 100%;
 }
 
-body {
+body { */
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /* margin-bottom: 60px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
+  line-height: 60px; 
+} */

@@ -69,12 +69,13 @@ namespace MessageBoard.Controllers
     [HttpPost]
     public ActionResult Edit(int id, Thread thread)
     {
+      var thisThread = Thread.GetThread(id);
       if(string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
       {
         return RedirectToAction("Login", "Accounts");
       }
       string userId = HttpContext.Session.GetString("userId");
-      thread.UserId = userId;
+      thread.UserId = thisThread.UserId;
       thread.ThreadId = id;
       ApiHelper.ApiPutThread(thread, userId);
       return RedirectToAction("Index");

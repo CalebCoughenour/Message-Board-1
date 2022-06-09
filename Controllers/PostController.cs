@@ -74,7 +74,7 @@ namespace MessageBoard.Controllers
         return RedirectToAction("Login", "Accounts");
       }
       string userId = HttpContext.Session.GetString("userId");
-      post.UserId = userId;
+      post.UserId = thisPost.UserId;
       post.Author = thisPost.Author;
       post.PostId = id;
       post.ThreadId = thisPost.ThreadId;

@@ -162,3 +162,4 @@ C:\Users\Sploob\Desktop\message-board\obj\Debug\net5.0\Razor\Views\Thread\Create
 C:\Users\Sploob\Desktop\message-board\obj\Debug\net5.0\Razor\Views\Thread\Edit.cshtml.g.cs
 C:\Users\Sploob\Desktop\message-board\obj\Debug\net5.0\Razor\Views\Post\Create.cshtml.g.cs
 C:\Users\Sploob\Desktop\message-board\obj\Debug\net5.0\Razor\Views\Post\Edit.cshtml.g.cs
+C:\Users\Sploob\Desktop\message-board\obj\Debug\net5.0\Razor\Views\Accounts\Logout.cshtml.g.cs
