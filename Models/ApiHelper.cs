@@ -70,11 +70,7 @@ namespace MessageBoard.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"threads/{thread.ThreadId}?userId={userId}", Method.PUT);
       request.AddJsonBody(thread);
-      Console.WriteLine(thread.ThreadId);
-      Console.WriteLine(thread.UserId);
-      Console.WriteLine(thread.Title);
       var response = await client.ExecuteTaskAsync(request);
-      Console.WriteLine(response);
     }
 
     public static async Task<string> ApiPostPost(Post post)
@@ -84,6 +80,14 @@ namespace MessageBoard.Models
       request.AddJsonBody(post);
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
+    }
+
+    public static async void ApiPutPost(Post post, string userId)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"posts/{post.PostId}?userId={userId}", Method.PUT);
+      request.AddJsonBody(post);
+      var response = await client.ExecuteTaskAsync(request);
     }
   }
 }

@@ -29,7 +29,7 @@ namespace MessageBoard.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
@@ -39,8 +39,8 @@ namespace MessageBoard.Controllers
         }
         public ActionResult Logoff()
         {
-            var allThreads = Thread.GetThreads();
-            return View(allThreads);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

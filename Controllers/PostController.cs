@@ -44,5 +44,42 @@ namespace MessageBoard.Controllers
       Post.PostPost(post);
       return RedirectToAction("Details", "Thread", new { id = id});
     }
+
+    public ActionResult Delete(int id)
+    {
+      if(string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
+      {
+        return RedirectToAction("Login", "Accounts");
+      }
+      string userId = HttpContext.Session.GetString("userId");
+      ApiHelper.ApiDelete(id, "posts", userId);
+      return RedirectToAction("Index", "Thread" );
+    }
+
+    public ActionResult Edit(int id)
+    {
+      if(string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
+      {
+        return RedirectToAction("Login", "Accounts");
+      }
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Edit(int id, Post post)
+    {
+      var thisPost = Post.GetPost(id);
+      if(string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
+      {
+        return RedirectToAction("Login", "Accounts");
+      }
+      string userId = HttpContext.Session.GetString("userId");
+      post.UserId = userId;
+      post.Author = thisPost.Author;
+      post.PostId = id;
+      post.ThreadId = thisPost.ThreadId;
+      ApiHelper.ApiPutPost(post, userId);
+      return RedirectToAction("Details","Thread", new { id = thisPost.ThreadId});
+    }
   }
 }

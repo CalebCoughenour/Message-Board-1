@@ -14,7 +14,7 @@ namespace MessageBoard.Controllers
     {
         public ActionResult Index()
         {
-
+            ViewBag.LoggedOut = string.IsNullOrEmpty(HttpContext.Session.GetString("userId"));
             var allThreads = Thread.GetThreads();
             return View(allThreads);
         }

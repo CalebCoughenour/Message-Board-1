@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+@model MessageBoard.Models.Post
+<h2>Update Post</h2>
+@using (Html.BeginForm("Edit", "Post", FormMethod.Post))
+{
+    
+    @Html.LabelFor(post => post.Message)
+    @Html.TextBoxFor(post=> post.Message)
+
+    <input type="submit" value="Edit Post" />
+}

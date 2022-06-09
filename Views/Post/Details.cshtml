@@ -1,2 +1,5 @@
 <h1>Author: @Model.Author</h1>
 <p>"@Model.Message"</p>
+
+<p>@Html.ActionLink("Edit Post", "Edit", "Post", new {id = Model.PostId})</p>
+<p>@Html.ActionLink("Delete Post", "Delete", "Post", new {id = Model.PostId})<p>
